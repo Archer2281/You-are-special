@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --rose-950: #71364e;
+  --rose-800: #91475f;
+  --rose-700: #b94f73;
+  --rose-600: #cf6486;
+  --rose-200: #f5cbd7;
+  --rose-100: #ffe7ee;
+  --cream: #fffaf8;
+}
+
+* { box-sizing: border-box; }
+
+.love-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 18px 26px;
+  color: var(--rose-950);
+  background:
+    radial-gradient(ellipse at 12% 15%, rgba(255,255,255,.9), transparent 36%),
+    radial-gradient(ellipse at 90% 80%, rgba(255,218,229,.8), transparent 32%),
+    linear-gradient(145deg, #fff7f5 0%, #ffedf2 48%, #fbe2eb 100%);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.glow {
+  position: absolute;
+  z-index: -1;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: .45;
+  pointer-events: none;
+}
+.glow-one { background: #f7b8ce; top: -120px; left: -100px; }
+.glow-two { background: #f5c4d6; bottom: -130px; right: -90px; }
+
+.floating-hearts { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+.floating-heart {
+  position: absolute;
+  bottom: -45px;
+  color: rgba(190, 79, 117, .28);
+  animation: float-up linear infinite;
+}
+@keyframes float-up {
+  0% { transform: translateY(0) rotate(-12deg); opacity: 0; }
+  12% { opacity: .75; }
+  85% { opacity: .6; }
+  100% { transform: translateY(-115vh) rotate(22deg); opacity: 0; }
+}
+
+.love-card {
+  width: min(100%, 590px);
+  position: relative;
+  padding: clamp(27px, 6vw, 52px) clamp(20px, 6vw, 56px) 28px;
+  border: 1px solid rgba(255,255,255,.92);
+  border-radius: 28px;
+  background: rgba(255, 252, 250, .78);
+  box-shadow: 0 24px 80px rgba(136, 57, 87, .13), 0 2px 12px rgba(136,57,87,.05);
+  text-align: center;
+  backdrop-filter: blur(16px);
+  animation: card-arrive .85s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes card-arrive {
+  from { opacity: 0; transform: translateY(18px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.eyebrow, .surprise-label {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  color: #b16b82;
+}
+.tiny-heart { margin: 20px auto 8px; font-size: 17px; color: #d76b8e; animation: heartbeat 2s ease-in-out infinite; }
+@keyframes heartbeat { 0%,100% { transform: scale(1); } 12% { transform: scale(1.17); } 24% { transform: scale(1); } }
+.love-card h1 {
+  margin: 0;
+  font: 600 clamp(43px, 9vw, 62px)/1.12 'Playfair Display', Georgia, serif;
+  letter-spacing: -.045em;
+  color: #783b53;
+}
+.title-heart { color: #cf6486; font-size: .8em; }
+.intro {
+  max-width: 350px;
+  margin: 16px auto 0;
+  color: #956b79;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.envelope-area { padding: 34px 0 25px; }
+.envelope-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: #a85b75;
+  font: inherit;
+}
+.envelope {
+  position: relative;
+  display: block;
+  width: 176px;
+  height: 120px;
+  border-radius: 8px;
+  background: #e8a0b6;
+  box-shadow: 0 15px 30px rgba(161, 71, 104, .19);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.envelope-button:hover .envelope { transform: translateY(-5px) rotate(-1deg); box-shadow: 0 20px 35px rgba(161,71,104,.25); }
+.envelope::before, .envelope::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  z-index: 2;
+}
+.envelope::before { left: 0; border-width: 60px 88px; border-color: transparent transparent #f2b9c9 #f2b9c9; border-radius: 0 0 0 8px; }
+.envelope::after { right: 0; border-width: 60px 88px; border-color: transparent #e99eb5 #e99eb5 transparent; border-radius: 0 0 8px 0; }
+.envelope-flap {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 88px solid transparent;
+  border-right: 88px solid transparent;
+  border-top: 69px solid #d783a0;
+  transform-origin: top center;
+  transition: transform .55s ease;
+}
+.envelope-letter {
+  position: absolute;
+  z-index: 1;
+  left: 17px;
+  right: 17px;
+  bottom: 8px;
+  height: 85px;
+  border-radius: 4px;
+  background: #fffaf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: italic 14px 'Playfair Display', Georgia, serif;
+  color: #bd6682;
+}
+.envelope-heart { position: absolute; z-index: 4; left: 50%; top: 48px; transform: translate(-50%,-50%); color: #fff2f5; font-size: 22px; }
+.open-prompt { font-size: 12px; letter-spacing: .03em; color: #a76b7e; }
+.is-open .envelope-flap { transform: rotateX(180deg); opacity: .5; }
+
+.letter-reveal { animation: letter-arrive .7s ease both; }
+@keyframes letter-arrive { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.letter-paper {
+  margin: 30px 0 18px;
+  padding: 25px clamp(17px, 4vw, 30px);
+  border: 1px solid #f5dce3;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #fffefa, #fff7f6);
+  text-align: left;
+  box-shadow: 0 8px 22px rgba(135,65,91,.06);
+}
+.paper-heart { text-align: center; font-size: 23px; color: #cf6486; margin-bottom: 13px; }
+.letter-greeting { font: 600 20px 'Playfair Display', Georgia, serif; color: #8b465e; }
+.letter-paper p { color: #7f5b66; font-size: 13px; line-height: 1.9; }
+.letter-paper .main-message {
+  margin: 12px 0;
+  font: 600 clamp(24px, 5vw, 30px)/1.3 'Playfair Display', Georgia, serif;
+  color: #b94f73;
+  text-align: center;
+}
+.letter-paper .letter-signoff { margin-top: 20px; font: italic 15px 'Playfair Display', Georgia, serif; text-align: right; color: #a65070; }
+
+.surprise-button {
+  border: 1px solid #e9b5c6;
+  border-radius: 999px;
+  background: #fff5f7;
+  padding: 12px 18px;
+  color: #a04b68;
+  font: 600 12px 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.surprise-button:hover { background: #ffe8ef; transform: translateY(-1px); }
+.surprise-note {
+  margin-top: 17px;
+  padding: 23px 20px;
+  border-radius: 14px;
+  border: 1px dashed #e5a7bc;
+  background: #fff0f4;
+  animation: letter-arrive .45s ease both;
+}
+.surprise-sparkle { font-size: 22px; color: #cc6487; }
+.surprise-label { margin: 8px 0 12px; font-size: 9px; }
+.surprise-text { margin: 0; color: #8d5367; font: 15px/1.9 'Playfair Display', Georgia, serif; }
+.surprise-end { display: block; margin-top: 13px; color: #cc6487; letter-spacing: .35em; }
+.footer-note { margin: 30px 0 0; color: #b17b8d; font: italic 13px 'Playfair Display', Georgia, serif; }
+.bottom-note { margin: 18px 0 0; color: #ad7b8c; font-size: 10px; letter-spacing: .06em; }
+
+@media (max-width: 480px) {
+  .love-page { padding: 25px 12px 18px; }
+  .love-card { border-radius: 22px; padding-top: 31px; }
+  .intro { font-size: 13px; }
+  .envelope { transform: scale(.92); }
+  .envelope-button:hover .envelope { transform: scale(.92) translateY(-4px); }
+  .letter-paper { margin-top: 23px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
